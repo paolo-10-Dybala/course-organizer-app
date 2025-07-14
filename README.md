@@ -29,20 +29,21 @@ A simple desktop application built with Python, Tkinter, and SQLite to help user
 ⚙️ Setup Instructions
 
 bash
-# Clone the repository
+Clone the repository:
 git clone https://github.com/YazdanUsername/course-organizer-app.git
+
 cd course-organizer-app
 
 🧪 Project Structure:
 course-organizer-app/
-├── main.py           # App entry point and integration
-├── ui.py             # GUI components and layout
-├── db.py             # SQLite database handling
-├── search.py         # Course search logic
-├── test.py     # Testing functions
-├── bugs.md           # Bug log and resolutions
-├── courses.db        # SQLite DB (auto-created)
-├── README.md         # This file
+ main.py           App entry point and integration
+ ui.py              GUI components and layout
+ db.py              SQLite database handling
+ search.py          Course search logic
+ test.py      Testing functions
+ bugs.md            Bug log and resolutions
+ courses.db         SQLite DB (auto-created)
+  README.md          This file
 
 👨‍👩‍👧‍👦 Contributors:
 
