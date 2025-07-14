@@ -3,22 +3,28 @@ from db import add_course, delete_course
 from search import search_course
 
 root = Tk()
+root.title("Course Management System")
+root.configure(bg="#f0f2f5")
+root.geometry("500x300")
 
-Label(root, text="Course Name").grid(row=0, column=0)
-name_entry = Entry(root)
-name_entry.grid(row=0, column=1)
+# Labels and Entry Fields
+Label(root, text="Course Name", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=0, column=0, pady=5, padx=10, sticky=W)
+name_entry = Entry(root, font=("Arial", 10))
+name_entry.grid(row=0, column=1, pady=5, padx=10)
 
-Label(root, text="Instructor").grid(row=1, column=0)
-instructor_entry = Entry(root)
-instructor_entry.grid(row=1, column=1)
+Label(root, text="Instructor", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=1, column=0, pady=5, padx=10, sticky=W)
+instructor_entry = Entry(root, font=("Arial", 10))
+instructor_entry.grid(row=1, column=1, pady=5, padx=10)
 
-Label(root, text="Semester").grid(row=2, column=0)
-semester_entry = Entry(root)
-semester_entry.grid(row=2, column=1)
+Label(root, text="Semester", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=2, column=0, pady=5, padx=10, sticky=W)
+semester_entry = Entry(root, font=("Arial", 10))
+semester_entry.grid(row=2, column=1, pady=5, padx=10)
 
-results = Listbox(root, width=60)
-results.grid(row=5, columnspan=3)
+# Listbox for results
+results = Listbox(root, width=60, font=("Courier", 9), bg="white")
+results.grid(row=5, column=0, columnspan=3, pady=10, padx=10)
 
+# Functions (no change)
 def handle_add():
     add_course(name_entry.get(), instructor_entry.get(), semester_entry.get())
     results.insert(END, f"Added: {name_entry.get()}")
@@ -29,7 +35,7 @@ def handle_delete():
 
 def handle_search():
     results.delete(0, END)
-    query = name_entry.get().strip()  # Use course name field for search
+    query = name_entry.get().strip()
     if query == "":
         results.insert(END, "Please enter course or instructor name to search.")
         return
@@ -39,8 +45,9 @@ def handle_search():
     for m in matches:
         results.insert(END, f"{m[0]} - {m[1]} ({m[2]})")
 
-Button(root, text="Add Course", command=handle_add).grid(row=3, column=0)
-Button(root, text="Delete Course", command=handle_delete).grid(row=3, column=1)
-Button(root, text="Search Course", command=handle_search).grid(row=3, column=2)
+# Buttons with styling
+Button(root, text="Add Course", command=handle_add, bg="#4CAF50", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=0, pady=10)
+Button(root, text="Delete Course", command=handle_delete, bg="#f44336", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=1, pady=10)
+Button(root, text="Search Course", command=handle_search, bg="#2196F3", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=2, pady=10)
 
 root.mainloop()
