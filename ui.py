@@ -7,7 +7,6 @@ root.title("Course Management System")
 root.configure(bg="#f0f2f5")
 root.geometry("500x300")
 
-# Labels and Entry Fields
 Label(root, text="Course Name", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=0, column=0, pady=5, padx=10, sticky=W)
 name_entry = Entry(root, font=("Arial", 10))
 name_entry.grid(row=0, column=1, pady=5, padx=10)
@@ -20,11 +19,9 @@ Label(root, text="Semester", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=
 semester_entry = Entry(root, font=("Arial", 10))
 semester_entry.grid(row=2, column=1, pady=5, padx=10)
 
-# Listbox for results
 results = Listbox(root, width=60, font=("Courier", 9), bg="white")
 results.grid(row=5, column=0, columnspan=3, pady=10, padx=10)
 
-# Functions (no change)
 def handle_add():
     add_course(name_entry.get(), instructor_entry.get(), semester_entry.get())
     results.insert(END, f"Added: {name_entry.get()}")
@@ -45,7 +42,6 @@ def handle_search():
     for m in matches:
         results.insert(END, f"{m[0]} - {m[1]} ({m[2]})")
 
-# Buttons with styling
 Button(root, text="Add Course", command=handle_add, bg="#4CAF50", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=0, pady=10)
 Button(root, text="Delete Course", command=handle_delete, bg="#f44336", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=1, pady=10)
 Button(root, text="Search Course", command=handle_search, bg="#2196F3", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=2, pady=10)
