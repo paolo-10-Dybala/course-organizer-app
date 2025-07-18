@@ -5,7 +5,7 @@ from search import search_course
 root = Tk()
 root.title("Course Management System")
 root.configure(bg="#f0f2f5")
-root.geometry("500x300")
+root.state('zoomed')  # Open in full screen on Windows
 
 Label(root, text="Course Name", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=0, column=0, pady=5, padx=10, sticky=W)
 name_entry = Entry(root, font=("Arial", 10))
@@ -19,7 +19,7 @@ Label(root, text="Semester", bg="#f0f2f5", font=("Arial", 10, "bold")).grid(row=
 semester_entry = Entry(root, font=("Arial", 10))
 semester_entry.grid(row=2, column=1, pady=5, padx=10)
 
-results = Listbox(root, width=60, font=("Courier", 9), bg="white")
+results = Listbox(root, width=100, font=("Courier", 10), bg="white")
 results.grid(row=5, column=0, columnspan=3, pady=10, padx=10)
 
 def handle_add():
@@ -42,8 +42,9 @@ def handle_search():
     for m in matches:
         results.insert(END, f"{m[0]} - {m[1]} ({m[2]})")
 
-Button(root, text="Add Course", command=handle_add, bg="#4CAF50", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=0, pady=10)
-Button(root, text="Delete Course", command=handle_delete, bg="#f44336", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=1, pady=10)
-Button(root, text="Search Course", command=handle_search, bg="#2196F3", fg="white", font=("Arial", 9, "bold"), width=15).grid(row=3, column=2, pady=10)
+Button(root, text="Add Course", command=handle_add, bg="#4CAF50", fg="white", font=("Arial", 9, "bold"), width=20).grid(row=3, column=0, pady=10)
+Button(root, text="Delete Course", command=handle_delete, bg="#f44336", fg="white", font=("Arial", 9, "bold"), width=20).grid(row=3, column=1, pady=10)
+Button(root, text="Search Course", command=handle_search, bg="#2196F3", fg="white", font=("Arial", 9, "bold"), width=20).grid(row=3, column=2, pady=10)
 
 root.mainloop()
+
